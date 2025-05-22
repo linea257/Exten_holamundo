@@ -1,6 +1,6 @@
 [module]
-Name = Hola Mundo Extension
+Name = Hola Mundo Extension Nueva
 Version = 1.0.0
 Description = Extension de prueba que muestra Hola Mundo
-Author = Tu Nombre
+Author = Bolivia Impuestos
 Type = extension
