@@ -1,7 +1,7 @@
 <?php
-class hooks_hola_mundo extends hooks 
+class hooks_nombre_extension extends hooks 
 {
-    var $module_name = 'hola_mundo';
+    var $module_name = "hola_mundo";
     
     function install_extension($dummy) 
     {
