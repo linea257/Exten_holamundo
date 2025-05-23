@@ -1,6 +1,13 @@
 [module]
-Name = Hola Mundo Extension Nueva
+Name = Hola mundo
 Version = 1.0.0
-Description = Extension de prueba que muestra Hola Mundo
-Author = Bolivia Impuestos
+Description = Descripción de tu extensión
+Author = Tu Nombre
 Type = extension
+
+[menu]
+module = 0  # 0=Transactions, 1=Inquiries/Reports, 2=Maintenance
+position = left  # left o right
+name = Tu Extensión
+url = modules/tu_extension/pages/tu_pagina.php
+permission = SA_OPEN
