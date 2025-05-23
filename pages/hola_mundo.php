@@ -1,17 +1,76 @@
 <?php
-$page_security = 'SA_OPEN';
-$path_to_root = "../..";
-include_once($path_to_root . "/includes/session.inc");
-include_once($path_to_root . "/includes/ui.inc");
+// Modificación al archivo hooks.php en la carpeta hola_mundo
 
-page(_("Hola Mundo Extension"));
-
-echo "<div style='text-align: center; margin: 50px;'>";
-echo "<h1>¡Hola Mundo desde GitHub!</h1>";
-echo "<p>Esta es una extensión cargada desde un repositorio de GitHub.</p>";
-echo "<p>Fecha actual: " . date('Y-m-d H:i:s') . "</p>";
-echo "<p>Esta extensión está funcionando correctamente.</p>";
-echo "</div>";
-
-end_page();
-?>
+class hooks_hola_mundo extends hooks 
+{
+    var $module_name = "hola_mundo";
+    
+    function install_extension($dummy) 
+    {
+        error_log("Instalando extensión hola_mundo");
+        
+        // Registrar enlaces de menú para la extensión
+        $this->create_menu_entries();
+        
+        return true;
+    }
+    
+    function uninstall_extension($dummy) 
+    {
+        error_log("Desinstalando extensión hola_mundo");
+        
+        // Eliminar enlaces de menú
+        $this->remove_menu_entries();
+        
+        return true;
+    }
+    
+    function activate_extension($company, $check_only=true) 
+    {
+        error_log("Activando extensión hola_mundo para empresa: " . $company);
+        
+        // Si solo estamos verificando, devuelve true
+        if ($check_only) return true;
+        
+        // Registrar enlaces de menú para la extensión
+        $this->create_menu_entries();
+        
+        return true;
+    }
+    
+    function deactivate_extension($company, $check_only=true) 
+    {
+        error_log("Desactivando extensión hola_mundo para empresa: " . $company);
+        
+        // Si solo estamos verificando, devuelve true
+        if ($check_only) return true;
+        
+        // Eliminar enlaces de menú
+        $this->remove_menu_entries();
+        
+        return true;
+    }
+    
+    // Función auxiliar para crear entradas de menú
+    private function create_menu_entries() {
+        global $path_to_root;
+        
+        // Ejemplo de cómo añadir una entrada de menú
+        // Esto requiere la función add_menu_item que debe estar definida en FrontAccounting
+        if (function_exists('add_menu_item')) {
+            // Añadir al menú "Configuración"
+            add_menu_item(_("Hola Mundo"), 
+                 "SA_OPEN", 
+                 "modules/hola_mundo/pages/hola_mundo.php", 
+                 "Mantenimiento", 
+                 "Bancos y Contabilidad");
+        } else {
+            error_log("No se pudo añadir al menú - función add_menu_item no disponible");
+        }
+    }
+    
+    // Función auxiliar para eliminar entradas de menú
+    private function remove_menu_entries() {
+        // Si hay una función para eliminar entradas de menú, úsala aquí
+    }
+}
