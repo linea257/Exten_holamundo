@@ -1,13 +1,12 @@
-[module]
-Name = hola_mundo
-Version = 1.0.0
-Description = Descripción de tu extensión
-Author = Tu Nombre
-Type = extension
+[extension]
+Name = "Hola Mundo"
+Version = "1.0.0"
+Description = "Extensión de ejemplo que muestra un mensaje de Hola Mundo"
+Author = "Tu Nombre"
+Type = "extension"
 
-[menu]
-module = 0  # 0=Transactions, 1=Inquiries/Reports, 2=Maintenance
-position = left  # left o right
-name = Tu Extensión
-url = modules/tu_extension/pages/tu_pagina.php
-permission = SA_OPEN
+[requires]
+FA = "2.4.0"
+
+[hooks]
+install_tabs = "install_tabs"
