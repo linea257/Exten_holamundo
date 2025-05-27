@@ -1,13 +1,16 @@
 <?php
-// Modificación al archivo hooks.php en la carpeta hola_mundo
 
 class hooks_hola_mundo extends hooks 
 {
     var $module_name = "hola_mundo";
     
-    function install_extension($dummy) 
+    // CORECCIÓN: Usar $check_only = true en lugar de $dummy
+    function install_extension($check_only = true) 
     {
         error_log("Instalando extensión hola_mundo");
+        
+        // Si solo estamos verificando, devuelve true
+        if ($check_only) return true;
         
         // Registrar enlaces de menú para la extensión
         $this->create_menu_entries();
@@ -15,9 +18,12 @@ class hooks_hola_mundo extends hooks
         return true;
     }
     
-    function uninstall_extension($dummy) 
+    function uninstall_extension($check_only = true) 
     {
         error_log("Desinstalando extensión hola_mundo");
+        
+        // Si solo estamos verificando, devuelve true
+        if ($check_only) return true;
         
         // Eliminar enlaces de menú
         $this->remove_menu_entries();
@@ -25,7 +31,7 @@ class hooks_hola_mundo extends hooks
         return true;
     }
     
-    function activate_extension($company, $check_only=true) 
+    function activate_extension($company, $check_only = true) 
     {
         error_log("Activando extensión hola_mundo para empresa: " . $company);
         
@@ -38,7 +44,7 @@ class hooks_hola_mundo extends hooks
         return true;
     }
     
-    function deactivate_extension($company, $check_only=true) 
+    function deactivate_extension($company, $check_only = true) 
     {
         error_log("Desactivando extensión hola_mundo para empresa: " . $company);
         
