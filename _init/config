@@ -1,12 +1,7 @@
-[extension]
-Name = "Hola Mundo"
-Version = "1.0.0"
-Description = "Extensión de ejemplo que muestra un mensaje de Hola Mundo"
-Author = "Tu Nombre"
-Type = "extension"
-
-[requires]
-FA = "2.4.0"
-
-[hooks]
-install_tabs = "install_tabs"
+Package: hola_mundo
+Name: "Hola Mundo"
+Version: "1.0.0"
+Description: Extensión de ejemplo que muestra un mensaje de Hola Mundo
+Author: Tu Nombre
+Type: extension
+FA_Requires: 2.4.0
